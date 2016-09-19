@@ -36,11 +36,6 @@ public class PageController {
 				ViewEntry entry = vec.getFirstEntry();
 				while (entry != null) {
 					
-					/*View: 
-					 * 1. Column: Key (sorted)
-					 * 2. Column: JSON String: (z.b. {"docUNID": "FAE110220E57ECE7C12578A700375101","name": "Petar Angelchev","job": "Bauingenieur","pictureURL": "https://notes.voessing.de/Kontaktdatenbank.nsf/0/FAE110220E57ECE7C12578A700375101/$FILE/PortalPicture.jpg"})
-					*/
-					
 					Vector<?> columnValues = entry.getColumnValues();
 					String colJson = String.valueOf(columnValues.get(ColIdx));
 					JsonJavaObject json = null;
@@ -82,11 +77,7 @@ public class PageController {
 				ViewEntry entry = vec.getFirstEntry();
 				while (entry != null) {
 					
-					/*View: 
-					 * 1. Column: Key (sorted)
-					 * 2. Column: JSON String: (z.b. {"docUNID": "FAE110220E57ECE7C12578A700375101","name": "Petar Angelchev","job": "Bauingenieur","pictureURL": "https://notes.voessing.de/Kontaktdatenbank.nsf/0/FAE110220E57ECE7C12578A700375101/$FILE/PortalPicture.jpg"})
-					*/
-					Counter++;
+				Counter++;
 										
 				   ViewEntry tempEntry = entry;
 				   entry = vec.getNextEntry();

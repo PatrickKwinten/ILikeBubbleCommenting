@@ -65,7 +65,7 @@ CommentController.loadObjectsCounter(parentID);}]]></xp:this.value></xp:text></s
 				<xc:ccComments>
 					<xc:this.ArrayListJSONObject><![CDATA[#{javascript:var parentID = tlo.getDocument().getUniversalID();
 CommentController.loadComments(parentID);}]]></xc:this.ArrayListJSONObject>
-					<xc:this.url><![CDATA[http://dev1/apps/voessing/SSAPNov2015/SelfServiceQ20151112.nsf/Object.xsp?&option=Person&unid=]]></xc:this.url>
+
 				</xc:ccComments>
 			</div>
 		</div>
