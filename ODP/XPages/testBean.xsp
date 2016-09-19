@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core">
+	<xp:this.beforePageLoad><![CDATA[#{javascript://var db:NotesDatabase = session.getDatabase("","apps/quintessens/comments.nsf");
+//UserBean.init(db);
+
+var thisDb:NotesDatabase = session.getDatabase("","apps/quintessens/comments2.nsf");
+User = new org.quintessens.comments.utils.UserBean(thisDb);
+sessionScope.put("aclPrivileges",User.aclPriviliges);}]]></xp:this.beforePageLoad>
+
+	<xp:text escape="true" id="computedField1">
+		<xp:this.value><![CDATA[#{javascript:function getUserPrivileges() {
+	    var privileges = database.queryAccessPrivileges(context.getUser().getDistinguishedName());
+	    return {
+	        createDocuments: ((privileges & NotesDatabase.DBACL_CREATE_DOCS) > 0),
+	        deleteDocuments: ((privileges & NotesDatabase.DBACL_DELETE_DOCS) > 0),
+	        readPublicDocuments: ((privileges & NotesDatabase.DBACL_READ_PUBLIC_DOCS) > 0),
+	        writePublicDocuments: ((privileges & NotesDatabase.DBACL_WRITE_PUBLIC_DOCS) > 0)
+	    };
+	}
+	
+	return getUserPrivileges().createDocuments}]]></xp:this.value>
+	</xp:text>
+
+	<xp:br></xp:br>
+	<xp:text escape="true" id="computedField2" rendered="false">
+		<xp:this.value><![CDATA[#{javascript:var thisDb:NotesDatabase = session.getDatabase("","apps/quintessens/comments2.nsf");
+//UserBean
+//UserBean.init(thisDb);
+Bean = new org.quintessens.comments.utils.UserBean(thisDb);}]]></xp:this.value>
+	</xp:text>
+	<xp:br></xp:br>
+	<xp:text escape="true" id="computedField4" value="#{javascript:@UserName()}"></xp:text>
+	<xp:br></xp:br>
+	<xp:repeat id="repeat1" rows="30" var="rowdata"
+		indexVar="rowindex">
+		<xp:this.value><![CDATA[#{javascript:var thisDb:NotesDatabase = session.getDatabase("","apps/quintessens/comments2.nsf");
+Bean = new org.quintessens.comments.utils.UserBean(thisDb);
+//UserBean(thisDb);
+return Bean.aclPriviliges;}]]></xp:this.value>
+		<xp:text escape="true" id="computedField3"
+			value="#{javascript:rowdata}" tagName="div">
+		</xp:text>
+	</xp:repeat>
+	<xp:br></xp:br>
+	<xp:text escape="true" id="computedField5" value="#{sessionScope.aclPrivileges}"></xp:text></xp:view>

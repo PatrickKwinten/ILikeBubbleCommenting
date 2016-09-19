@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='utf-8'?>
+<note class='view' xmlns='http://www.lotus.com/dxl' version='9.0' maintenanceversion='1.5'
+ replicaid='C1258030006A0827'>
+<noteinfo noteid='15a' unid='6FFC6BC6D74F31C9C125802B002F13E3' sequence='4'>
+<created><datetime dst='true'>20160911T103412,83+02</datetime></created>
+<modified><datetime dst='true'>20160916T211809,47+02</datetime></modified>
+<revised><datetime dst='true'>20160912T144813,57+02</datetime></revised>
+<lastaccessed><datetime dst='true'>20160916T212001,31+02</datetime></lastaccessed>
+<addedtofile><datetime dst='true'>20160916T211809,47+02</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Patrick Kwinten/O=quintessens</name></updatedby>
+<wassignedby><name>CN=Patrick Kwinten/O=quintessens</name></wassignedby>
+<item name='$FormulaClass' sign='true'><text>1</text></item>
+<item name='$TITLE' sign='true'><text>TLO</text></item>
+<item name='$Index' sign='true'><text/></item>
+<item name='$Formula' summary='true' sign='true'><formula compiled='true'>
+WgAFACwAKAAFAAQABQAEAAkABABUeXBlVGl0bGVVTklEJENvbmZsaWN0JFJFRgQABAAAABwABQAE
+AEZvcm0BAAMAdGxvAAoCBAAEAAMABwAMAAUACTNTNFMA
+</formula></item>
+<item name='$Collation' summary='true'>
+<rawitemdata type='2'>
+BgAAAABE
+</rawitemdata></item>
+<item name='$ViewFormat' summary='true' sign='true'>
+<rawitemdata type='5'>
+AQADAAMACAAAAFZDAAAEAAQAAAAAAFAAAQAACgAAAAAAAAAAAAICAAAAVkMAAAUABQAAAAAAsQAB
+AAAKAAAAAAAAAAAAAgIAAABWQwAABAAEAAAAAABQAAEAAAoAAAAAAAAAAAACAgAAAFR5cGVUeXBl
+VGl0bGVUaXRsZVVOSURVTklEJgABAAAAAQEACQEAAAoBAQ4KAAABAK0rAQABAAEAAAAAAAAAAABX
+QwEBAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAV0MBAQAJAAAAAAAA
+AAAAAAAAAAAAAAAABAAAAAAA//8AAAAAAAAAAAAAAAAAAFdDAQEACQAAAAAAAAAAAAAAAAAAAAAA
+AAQAAAAAAP//AAAAAAAAAAAAAAAAAABCAAAAAAABAP///wAFAP///wABAAAAAAAAAAAAAAAAAAEA
+////AAEA////AAAAAQAAAAAAAQAAAAAAAQAAAAAAAAAIAAAAAAABAA==
+</rawitemdata></item>
+<item name='$Comment' sign='true'><text/></item>
+<item name='$Flags'><text>PY</text></item>
+<item name='$DesignerVersion'><text>8.5.3</text></item>
+<item name='$SelQuery' sign='true'>
+<rawitemdata type='f'>
+gQYAAAAAif8PAAAAAAABAAMAdGxvAA==
+</rawitemdata></item></note>
+

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core"
+	xmlns:xe="http://www.ibm.com/xsp/coreex">
+	<xp:this.data>
+		<xp:dominoView var="view1" viewName="Date"></xp:dominoView>
+	</xp:this.data>
+	<h1>Comments</h1>
+	<xp:repeat id="repeat1" rows="30" value="#{view1}" var="rowdata"
+		indexVar="rowindex">
+		<xp:panel tagName="div">
+			<xp:text escape="true" id="computedField1"
+				value="#{rowdata.Date}">
+				<xp:this.converter>
+					<xp:convertDateTime type="both" dateStyle="full"></xp:convertDateTime>
+				</xp:this.converter>
+			</xp:text>
+		</xp:panel>
+	</xp:repeat>
+	<xp:panel>
+
+		<xe:accordion id="accordion1"></xe:accordion>
+		
+					
+</xp:panel>
+</xp:view>

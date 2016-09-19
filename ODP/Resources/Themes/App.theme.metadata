@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="1.5" replicaid="C1258030006A0827" version="9.0" xmlns="http://www.lotus.com/dxl">
+<noteinfo noteid="176" sequence="34" unid="45FD67F8210FA83FC125802C005117CC">
+<created><datetime dst="true">20160912T164545,08+02</datetime></created>
+<modified><datetime dst="true">20160916T211809,61+02</datetime></modified>
+<revised><datetime dst="true">20160914T133851,58+02</datetime></revised>
+<lastaccessed><datetime dst="true">20160916T211809,61+02</datetime></lastaccessed>
+<addedtofile><datetime dst="true">20160916T211809,61+02</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Patrick Kwinten/O=quintessens</name></updatedby>
+<wassignedby><name>CN=Patrick Kwinten/O=quintessens</name></wassignedby>
+<item name="$TITLE"><text>App.theme</text></item>
+<item name="$Flags"><text>34567Cg~`</text></item>
+<item name="$DesignerVersion"><text>8.5.3</text></item>
+
+
+<item name="$FileNames" sign="true"><text>App.theme</text></item>
+<item name="$CSSFiles"><textlist><text>font-awesome-4.4.0/css/font-awesome-fontFamily.css</text><text>font-awesome-4.4.0/css/font-awesome-fontFamily.min.css</text><text>font-awesome-4.4.0/css/font-awesome.min.css</text></textlist></item></note>

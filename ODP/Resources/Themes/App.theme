@@ -1,0 +1,54 @@
+<!--
+	The default theme contents use theme inheritance.
+
+	Application themes can extend an existing global theme using the
+	extends attribute.  Existing themes include the following options:
+
+	1. webstandard 2. oneui 3. notes
+-->
+<theme extends="Bootstrap3_flat" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="platform:/plugin/com.ibm.designer.domino.stylekits/schema/stylekit.xsd" >
+	<!-- 
+		Use this patteBootstrap3_flatrn to include resources (such as style sheets
+		and JavaScript files that are used by this theme.
+	-->
+	
+	
+	<resource rendered="#{javascript:context.getProperty('xsp.resources.aggregate').equals('false')}">
+	    <content-type>text/css</content-type>
+	    <href>font-awesome-4.4.0/css/font-awesome-fontFamily.css</href>
+	</resource>
+	<resource rendered="#{javascript:context.getProperty('xsp.resources.aggregate').equals('true')}">
+	    <content-type>text/css</content-type>
+	    <href>font-awesome-4.4.0/css/font-awesome-fontFamily.min.css</href>
+	</resource>
+	<resource>
+		<content-type>text/css</content-type>
+		<href>font-awesome-4.4.0/css/font-awesome.min.css</href>
+	</resource>
+	
+	
+		<resources>
+		<styleSheet 
+			href="comments.css">
+		</styleSheet>
+		<script 
+			src="/app.jss" 
+			clientSide="false">
+		</script>
+		
+		<styleSheet 
+			href="/libs/mention-js/recommended-styles.css">
+		</styleSheet>
+		<script 
+			src="/libs/mention-js/bootstrap-typeahead.js" 
+			clientSide="true">
+		</script>
+		<script 
+			src="/libs/mention-js/mention.js" 
+			clientSide="true">
+		</script>
+		</resources>
+
+	
+
+</theme>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core"
+	xmlns:xe="http://www.ibm.com/xsp/coreex">
+	
+
+
+	<xp:panel id="pnlLike" tagName="span">
+		&#160;-&#160;
+		<xp:text escape="true" id="iconLike" contentType="html">
+			<xp:this.value><![CDATA[#{javascript:return '<i class="fa fa-thumbs-o-up"></i>'}]]></xp:this.value>
+
+		</xp:text>
+		<xe:tooltip id="tooltip1" for="iconLike">
+			<xe:this.label><![CDATA[#{javascript:var likers = LikeController.getLikers("apps/quintessens/comments2.nsf", obj.docUNID);
+
+@Implode(@Name("[Abbreviate]",likers),"<br/>")}]]></xe:this.label>
+		</xe:tooltip>
+		&#160;
+		<xp:text escape="true" id="computedField1">
+			<xp:this.value><![CDATA[#{javascript:LikeController.getCount("apps/quintessens/comments2.nsf", obj.docUNID,"likes")}]]></xp:this.value>
+			<xp:this.converter>
+				<xp:convertNumber type="number" integerOnly="true"></xp:convertNumber>
+			</xp:this.converter>
+
+		</xp:text>
+		&#160;
+
+		<xp:link escape="true" id="link1"
+			title="click to like or unlike this post">
+
+			<xp:this.rendered><![CDATA[#{javascript:var thisDb:NotesDatabase = session.getDatabase("","apps/quintessens/comments2.nsf");
+User = new org.quintessens.comments.utils.UserBean(thisDb);
+var aclPrivileges = viewScope.get("aclPrivileges");
+var isLiker = viewScope.get("hasRoleLikers");
+if (
+	(@UserName() != obj.From) 
+	&& (isLiker) 
+	&& (aclPrivileges.contains("DBACL_CREATE_DOCS")) 
+	){
+		return true;
+	}
+else{
+	return false;
+}
+}]]></xp:this.rendered>
+			<xp:this.text><![CDATA[#{javascript:LikeController.getLinkLabel("apps/quintessens/comments2.nsf", obj.docUNID)}]]></xp:this.text>
+			<xp:eventHandler event="onclick" submit="true"
+				refreshMode="partial" refreshId="pnlLike">
+				<xp:this.action><![CDATA[#{javascript:LikeController.likeorunlike("apps/quintessens/comments2.nsf",obj.docUNID)}]]></xp:this.action>
+			</xp:eventHandler>
+		</xp:link>
+	</xp:panel>
+</xp:view>

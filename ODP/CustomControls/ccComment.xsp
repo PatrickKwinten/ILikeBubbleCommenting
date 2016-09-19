@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xe="http://www.ibm.com/xsp/coreex">
+	<xp:this.beforePageLoad><![CDATA[#{javascript:Comment.create()}]]></xp:this.beforePageLoad>
+	<div class="section">
+		<div class="container-fluid">
+			<div class="col-md-8">
+				<xp:inputTextarea id="comment" styleClass="form-control"
+					value="#{Comment.post}" rows="3">
+					<xp:this.attrs>
+						<xp:attr name="type" value="text" />
+						<xp:attr name="placeholder"
+							value="What is on your mind..." />
+					</xp:this.attrs>
+				</xp:inputTextarea>
+			</div>
+			<div class="col-md-4">
+				
+				<xp:button value="Submit" id="btnOK" styleClass="btn-primary " title="submit...">
+				<i class="fa fa-check" />
+    <xp:eventHandler event="onclick" submit="true" refreshMode="partial" refreshId="pnlComments">
+        <xp:this.action>
+            <xp:actionGroup>
+
+            	<xp:confirm message="Ready to submit?"></xp:confirm>
+
+            	<xp:executeScript>
+            		<xp:this.script><![CDATA[#{javascript:var doc:NotesDocument = tlo.getDocument();
+var parentId = compositeData.ObjectIdParent;
+var replicaId = compositeData.ReplicaIdParent;
+Comment.setParentId(parentId);
+Comment.setReplicaId(replicaId);
+Comment.save("apps/quintessens/comments2.nsf");
+Comment.clear();}]]></xp:this.script>
+            	</xp:executeScript>
+            </xp:actionGroup>
+        </xp:this.action>
+    </xp:eventHandler>
+</xp:button>
+			</div>
+		</div>
+	</div>
+	<xp:scriptBlock id="scriptBlock1">
+		<xp:this.value><![CDATA[function x$(idTag, param) {
+    idTag = idTag.replace(/:/gi, "\\:") + (param ? param : "");
+    return ($("#" + idTag));
+}
+
+$(document).ready(function() {
+    $.getJSON('REST.xsp/users', function(result){
+       x$("#{id:comment}").mention({
+       sensitive: true,
+       delimiter: '@',
+       users:result.data
+       })
+    });
+});]]></xp:this.value>
+	</xp:scriptBlock>
+</xp:view>

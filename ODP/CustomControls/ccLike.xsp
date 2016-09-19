@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core">
+	<xp:this.beforePageLoad><![CDATA[#{javascript:response = facesContext.getExternalContext().getResponse(); 
+userCookie = new javax.servlet.http.Cookie("userid", @UserName()); 
+userCookie.setComment("Cookie with the user's username"); 
+userCookie.setDomain(context.getUrl().getHost()); 
+//Cookie.setMaxAge(-1) will make the cookie expire after the browser is closed
+userCookie.setMaxAge(-1); 
+userCookie.setPath("/"); 
+//userCookie.setSecure(true); 
+response.addCookie(userCookie); }]]></xp:this.beforePageLoad>
+	
+	<xp:panel id="pnlLike" tagName="span">&#160;-&#160;
+		<i class="fa fa-thumbs-o-up"></i>
+		&#160;
+		<xp:text escape="true" id="txtLikeCounter">
+			<xp:this.value>
+				<![CDATA[#{javascript:var id:String = obj.docUNID;
+var vw:NotesView = database.getView("likes");
+var doc:NotesDocument = vw.getDocumentByKey(id);
+if(null != doc){
+	var likes = doc.getItemValue("likers");	
+	return likes.size();
+}else{
+	return 0;
+}}]]>
+			</xp:this.value>
+			<xp:this.converter>
+				<xp:convertNumber type="number" integerOnly="true">
+				</xp:convertNumber>
+			</xp:this.converter>
+		</xp:text>
+		&#160;
+
+		<xp:link escape="true" id="lnkLikeUnlike"
+			title="click to like or unlike this post">
+			<xp:this.text>
+				<![CDATA[#{javascript:function getCookieValueX(cookieName){
+	try{
+		return cookie.get(cookieName).getValue();
+	}catch(e){
+		return ""
+	}
+}  
+
+
+var id:String = obj.docUNID;
+var vw:NotesView = database.getView("likes");
+var doc:NotesDocument = vw.getDocumentByKey(id);
+
+var fld = java.util.Vector();
+
+if (null != doc){
+	fld = doc.getItemValue("likers");
+	var userid = getCookieValueX("userid");
+	if(fld.contains(userid)){
+		"unlike";
+	}else{
+		"like";
+	}
+}else{
+	return "like";
+}
+
+
+}]]>
+
+			</xp:this.text>
+			<xp:this.rendered><![CDATA[#{javascript:if (@UserName() != obj.From){
+		return true;
+	}
+	else{
+		return false;
+	}}]]></xp:this.rendered>
+			<xp:eventHandler event="onclick" submit="true"
+				refreshMode="partial" refreshId="pnlLike">
+				<xp:this.action><![CDATA[#{javascript:var id:String = obj.docUNID;
+like(id);
+
+function like(id){
+	try{
+		var userid = getCookieValueX("userid");
+		var vw:NotesView = database.getView("likes");	
+		var doc:NotesDocument = vw.getDocumentByKey(id);
+		if (null == doc){
+			var doc:NotesDocument = database.createDocument();
+			doc.appendItemValue("Form", "like");
+			doc.appendItemValue("ObjectIdParent",id);
+			doc.appendItemValue("Likers",userid);
+		} else{
+			var fld = java.util.Vector();
+			fld = doc.getItemValue("Likers");
+			if(fld.contains(userid)){
+				fld.removeElement(userid);
+			}else{
+				fld.add(userid);
+			}
+			doc.replaceItemValue("Likers",fld);
+		}
+		doc.computeWithForm(true,false);
+		doc.save();
+	}catch(e){
+		print("error with like(id)");
+	}
+}}]]></xp:this.action>
+			</xp:eventHandler>
+		</xp:link>
+
+	</xp:panel>
+</xp:view>

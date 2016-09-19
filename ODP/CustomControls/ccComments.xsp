@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xc="http://www.ibm.com/xsp/custom">
+	<xp:repeat id="rptComments" rows="30"
+		value="#{javascript:compositeData.ArrayListJSONObject;}" var="obj"
+		indexVar="idx">
+		<xp:panel tagName="div">
+			<xp:this.styleClass><![CDATA[#{javascript:if (@UserName() == obj.From){
+		return "message-feed media";
+	}
+	else{
+		return "message-feed right";
+	}}]]></xp:this.styleClass>
+			<xp:panel tagName="div">
+				<xp:this.styleClass><![CDATA[#{javascript:if (@UserName() == obj.From){
+	return "pull-left";
+}
+else{
+	return "pull-right";
+}}]]></xp:this.styleClass>
+				<xp:image id="image1" styleClass="img-avatar"
+					title="#{javascript:obj.From}" alt="#{javascript:obj.From}">
+					<xp:this.url><![CDATA[#{javascript://please bind this to a service
+var img = "http://bootdey.com/img/Content/avatar/avatar";
+var imgExt = ".png";
+
+var counter:Integer = (Math.floor(Math.random()*7)+1)+1;
+if (@UserName() == obj.From){
+		return img + "1" + imgExt;
+	}
+	else{
+		return img + counter + imgExt;
+	}	
+}]]></xp:this.url>
+				</xp:image>
+			</xp:panel>
+			<div class="media-body">
+				<div class="mf-content">
+					<xp:inputTextarea id="comment"
+						styleClass="form-control" value="#{javascript:obj.Post}" rows="5"
+						disabled="true">
+						<xp:this.attrs>
+							<xp:attr name="type" value="text" />
+							<xp:attr name="placeholder"
+								value="Enter a comment..." />
+						</xp:this.attrs>
+					</xp:inputTextarea>
+				</div>
+				<small class="mf-date">
+					<xp:link escape="true" id="link1">
+						<xp:this.value><![CDATA[#{javascript:var url:String = compositeData.url;
+var nam:NotesName = session.createName(obj.From);
+return url + nam.getCommon();}]]></xp:this.value>
+						<i class="fa fa-user"></i>
+						&#160;
+						<xp:this.text><![CDATA[#{javascript:var nam:NotesName = session.createName(obj.From);
+return nam.getCommon();}]]></xp:this.text>
+
+						<xp:this.rendered><![CDATA[#{javascript:if (@UserName() == obj.From){
+        return false;
+    }
+    else{
+        return true;
+    }}]]></xp:this.rendered>
+					</xp:link>
+					&#160;&#160;
+					<i class="fa fa-clock-o" />
+					&#160;
+					<xp:text escape="true" id="objCreated">
+						<xp:this.value><![CDATA[#{javascript:
+var theDate = obj.Created;
+p = new org.ocpsoft.pretty.time.PrettyTime();
+p.format(new Date(theDate))}]]></xp:this.value>
+					</xp:text>
+					<xp:link escape="true" text="Remove"
+						id="lnkRemove">
+						&#160;&#160;
+						<i class="fa fa-trash" />
+						&#160;
+						<xp:this.rendered><![CDATA[#{javascript:if ( (@UserName() == obj.From) && (userBean.canDeleteDocs == true)){
+		return true;
+	}
+	else{
+		return false;
+	}}]]></xp:this.rendered>
+						<xp:eventHandler event="onclick" submit="true"
+							refreshMode="partial" refreshId="rptComments">
+							<xp:this.action>
+								<xp:actionGroup>
+									<xp:confirm
+										message="Sure delete comment?" />
+									<xp:executeScript>
+										<xp:this.script><![CDATA[#{javascript:var id:String = obj.docUNID;
+var doc:NotesDocument = database.getDocumentByUNID(id);
+doc.remove(true);}]]></xp:this.script>
+									</xp:executeScript>
+								</xp:actionGroup>
+							</xp:this.action>
+						</xp:eventHandler>
+					</xp:link>
+					<xc:ccLike20></xc:ccLike20>
+				</small>
+			</div>
+		</xp:panel>
+	</xp:repeat>
+	<xc:ccInifiniteScroll repeatId="rptComments" />
+</xp:view>

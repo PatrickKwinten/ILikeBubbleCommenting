@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core"
+	xmlns:xe="http://www.ibm.com/xsp/coreex">
+	
+	<xe:restService id="restServiceUsers" pathInfo="users">
+		<xe:this.service>
+			<xe:customRestService contentType="application/json"
+				serviceBean="org.quintessens.comments.rest.Users">
+			</xe:customRestService>
+		</xe:this.service>
+	</xe:restService>
+	
+	
+</xp:view>

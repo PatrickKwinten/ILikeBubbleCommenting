@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="1.5" replicaid="C1258030006A0827" version="9.0" xmlns="http://www.lotus.com/dxl">
+<noteinfo noteid="1a2" sequence="18" unid="E069F9B5C1B0F11DC125802D0029E4A0">
+<created><datetime dst="true">20160913T093735,04+02</datetime></created>
+<modified><datetime dst="true">20160916T211809,83+02</datetime></modified>
+<revised><datetime dst="true">20160915T110637,96+02</datetime></revised>
+<lastaccessed><datetime dst="true">20160916T211809,83+02</datetime></lastaccessed>
+<addedtofile><datetime dst="true">20160916T211809,83+02</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Patrick Kwinten/O=quintessens</name></updatedby>
+<wassignedby><name>CN=Patrick Kwinten/O=quintessens</name></wassignedby>
+<item name="$Flags"><text>34567Cg~[</text></item>
+<item name="$TITLE"><text>org/quintessens/comments/controller/CommentController.java</text></item>
+
+<item name="$DesignerVersion"><text>8.5.3</text></item>
+
+
+<item name="$FileNames" sign="true"><text>org/quintessens/comments/controller/CommentController.java</text></item>
+
+</note>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core">
+
+	<xp:viewPanel rows="30" id="viewPanel1" pageName="/TLO.xsp">
+		<xp:this.facets>
+			<xp:pager partialRefresh="true" layout="Previous Group Next"
+				xp:key="headerPager" id="pager1">
+			</xp:pager>
+		</xp:this.facets>
+		<xp:this.data>
+			<xp:dominoView var="vw" viewName="TLO"></xp:dominoView>
+		</xp:this.data>
+		<xp:viewColumn columnName="Type" id="viewColumn1">
+			<xp:viewColumnHeader value="Type" id="viewColumnHeader1"></xp:viewColumnHeader>
+		</xp:viewColumn>
+		<xp:viewColumn columnName="Title" id="viewColumn2" displayAs="link" openDocAsReadonly="true">
+			<xp:viewColumnHeader value="Title" id="viewColumnHeader2"></xp:viewColumnHeader>
+		</xp:viewColumn>
+		<xp:viewColumn columnName="UNID" id="viewColumn3">
+			<xp:viewColumnHeader value="UNID" id="viewColumnHeader3"></xp:viewColumnHeader>
+		</xp:viewColumn>
+	</xp:viewPanel>
+
+</xp:view>

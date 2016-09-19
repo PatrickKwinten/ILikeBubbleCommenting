@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xc="http://www.ibm.com/xsp/custom"
+	xmlns:xe="http://www.ibm.com/xsp/coreex" xmlns:on="http://www.openntf.org/domino/xsp">
+
+	<xp:this.data>
+		<xp:dominoDocument var="tlo" formName="tlo" action="openDocument" />
+	</xp:this.data>
+
+	
+	<xp:this.beforePageLoad><![CDATA[#{javascript://var db:NotesDatabase = session.getDatabase("","apps/quintessens/comments.nsf");
+//UserBean.init(db);
+//UserBean.init();
+
+
+var thisDb:NotesDatabase = session.getDatabase("","apps/quintessens/comments2.nsf");
+User = new org.quintessens.comments.utils.UserBean(thisDb);
+viewScope.put("aclPrivileges",User.aclPriviliges);
+viewScope.put("hasRoleLikers",User.hasRole('[likers]'));}]]></xp:this.beforePageLoad>
+	<div class="section">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-3"/>
+				<div class="col-md-9">
+					<h1>
+						TLO
+						<small>
+							&#160;
+							<xp:text escape="true" id="computedField1"
+								value="#{tlo.Title}">
+							</xp:text></small></h1>
+					<h3>
+						<xp:inputText value="#{tlo.Type}" id="type1" />
+					</h3>
+					<div class="row">
+						<div class="col-md-3">
+							<xp:label value="Document id:" id="documentId_Label1"
+								for="documentId1" />
+						</div>
+						<div class="col-md-9">
+							<xp:inputText value="#{tlo.DocumentId}" id="documentId1" />
+							</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<xp:panel styleClass="section" tagName="div" id="pnlComments">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h2>
+						Comments<small>&#160;
+						<xp:text escape="true" id="computedField2"><xp:this.value><![CDATA[#{javascript:var parentID = tlo.getDocument().getUniversalID();
+CommentController.loadObjectsCounter(parentID);}]]></xp:this.value></xp:text></small></h2>
+
+					<xp:panel styleClass="bs-callout bs-callout-info"
+						tagName="div">
+					<xc:ccComment ObjectIdParent="#{javascript:tlo.getDocument().getUniversalID()}" ReplicaIdParent="#{javascript:tlo.getDocument().getParentDatabase().getReplicaID()}" /></xp:panel>
+					
+				</div>
+			</div>
+			<div class="row">
+
+				<xc:ccComments>
+					<xc:this.ArrayListJSONObject><![CDATA[#{javascript:var parentID = tlo.getDocument().getUniversalID();
+CommentController.loadComments(parentID);}]]></xc:this.ArrayListJSONObject>
+					<xc:this.url><![CDATA[http://dev1/apps/voessing/SSAPNov2015/SelfServiceQ20151112.nsf/Object.xsp?&option=Person&unid=]]></xc:this.url>
+				</xc:ccComments>
+			</div>
+		</div>
+	</xp:panel>
+
+
+
+
+</xp:view>

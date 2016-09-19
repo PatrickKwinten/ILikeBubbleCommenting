@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config>
+  <faces-config-extension>
+    <namespace-uri>http://www.ibm.com/xsp/custom</namespace-uri>
+    <default-prefix>xc</default-prefix>
+  </faces-config-extension>
+  <composite-component>
+    <component-type>ccComments</component-type>
+    <composite-name>ccComments</composite-name>
+    <composite-file>/ccComments.xsp</composite-file>
+    <composite-extension>
+      <designer-extension>
+        <in-palette>true</in-palette>
+      </designer-extension>
+    </composite-extension>
+    <property>
+      <property-name>ArrayListJSONObject</property-name>
+      <property-class>object</property-class>
+    </property>
+    <property>
+      <property-name>url</property-name>
+      <property-class>string</property-class>
+    </property>
+  </composite-component>
+</faces-config>

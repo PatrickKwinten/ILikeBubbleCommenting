@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xe="http://www.ibm.com/xsp/coreex">
+	<!-- make sure 'add rows' component is hidden -->
+	<style>
+		.infiniteScroll{display:none;}
+	</style>
+   
+	<!-- add a class for the 'add rows component'  -->
+	<xe:pagerAddRows 
+		id="pagerAddRows1"
+    	for="#{javascript:compositeData.repeatId}"
+    	styleClass="infiniteScroll"
+    	rowCount="16">
+	</xe:pagerAddRows>
+ 
+	<!-- small script to check if we need to auto-click the 'add rows' button -->
+	<xp:scriptBlock id="scriptBlock1">
+		<xp:this.value><![CDATA[$(window).scroll(function(){
+	    if($(window).scrollTop() == $(document).height() - $(window).height()) {
+	       $(".infiniteScroll ul li a").click();
+	    }
+		});]]>
+		</xp:this.value>
+	</xp:scriptBlock>
+</xp:view>
